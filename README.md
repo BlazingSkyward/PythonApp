@@ -9,6 +9,7 @@ This app is a reminder application for tasks such as school assignements and wor
 ### Prerequisites
 
 Python 2.7
+Flask 0.12
 
 ### Installing
 
