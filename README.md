@@ -1,6 +1,6 @@
 #PythonApp - Title TBD
 
-This app is a reminder application for tasks such as school assignements and work
+This application is to create reminders for everyday tasks and would implement machine learning to predict when a reminder has been forgotten to notify user in a more efficient manner. 
 
 ## Getting Started
 
