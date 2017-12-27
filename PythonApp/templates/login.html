@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> PythonApp </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{{ url_for('static',filename='css/login.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+
+  </head>
+
+
+
+<!--Login/Register-->
+  <form class="login ">
+		      <img src="{{url_for('static', filename='images/forgot_professor.jpg')}}" alt="Funny Meme"/>
+		      <div>
+            <input type="text" placeholder="Nick"  name="user">
+          </div>
+		      <div>
+            <input type="Password" placeholder="Password"  name="user">
+          </div>
+		      <div>
+            <input  type="submit" value="Register/Login">
+          </div>
+  </form>
+<!--.-->
+
+</html>
