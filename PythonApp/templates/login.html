@@ -12,13 +12,13 @@
 
 
 <!--Login/Register-->
-  <form class="login ">
+  <form class="login" action="/login" method="POST">
 		      <img src="{{url_for('static', filename='images/forgot_professor.jpg')}}" alt="Funny Meme"/>
 		      <div>
-            <input type="text" placeholder="Nick"  name="user">
+            <input type="text" placeholder="Malik"  name="user">
           </div>
 		      <div>
-            <input type="Password" placeholder="Password"  name="user">
+            <input type="Password" placeholder="Password"  name="password">
           </div>
 		      <div>
             <input  type="submit" value="Register/Login">
