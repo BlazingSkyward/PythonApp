@@ -8,10 +8,10 @@ This application is to create reminders for everyday tasks and would implement m
 
 ### Prerequisites
 
-Python 2.7
-Flask 0.12
-flask_sqlalchemy
-flask-migrate
+* Python 2.7
+* Flask 0.12
+* flask_sqlalchemy
+* flask-migrate
 
 ### Installing
 
