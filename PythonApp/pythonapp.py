@@ -3,15 +3,23 @@ from flask import Flask, flash, redirect \
     ,render_template, request, session, abort, url_for
 import os
 
+class Config(object):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, 'app.db')
+    DEBUG = False
+    TESTING = False
+    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(16)
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
 app = Flask(__name__)
-app.secret_key = os.urandom(12)
+app.config.from_object(Config)
 
 @app.route("/")
 def index():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     else:
-        return redirect(url_for('main'))
+        return redirect(url_for('main_page'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -28,6 +36,6 @@ def login():
             return render_template('login.html')
     return render_template('login.html')
 
-@app.route('/main',methods=['GET', 'POST'])
-def main():
-    render_template('main.html')
+@app.route("/main") #,methods=['GET', 'POST'])
+def main_page():
+    return render_template('main.html')
