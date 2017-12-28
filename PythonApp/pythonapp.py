@@ -2,10 +2,11 @@
 from flask import Flask, flash, redirect \
     ,render_template, request, session, abort, url_for \
     , models
-    
+
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from config import Config
 
 class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
