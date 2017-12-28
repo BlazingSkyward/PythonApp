@@ -13,10 +13,12 @@
   <form class="login" action="/login" method="POST">
 		      <img src="{{url_for('static', filename='images/forgot_professor.jpg')}}" alt="Funny Meme"/>
 		      <div>
-            <input type="text" placeholder="Malik"  name="user">
+            <input type="text" placeholder="Username"  name="user"
+            value="{{request.form.username}}">
           </div>
 		      <div>
-            <input type="Password" placeholder="Password"  name="password">
+            <input type="Password" placeholder="Password"  name="password",
+            value="{{request.form.password}}">
           </div>
 		      <div>
             <input  type="submit" value="Register/Login">

@@ -31,7 +31,7 @@ def login():
         password = request.form['password']
         if user == 'admin' and password == 'password':
             session['logged_in'] = user
-            return redirect(url_for('main'))
+            return redirect(url_for('main_page'))
         else:
             return render_template('login.html')
     return render_template('login.html')
@@ -39,3 +39,7 @@ def login():
 @app.route("/main") #,methods=['GET', 'POST'])
 def main_page():
     return render_template('main.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
