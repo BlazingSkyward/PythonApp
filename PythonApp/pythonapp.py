@@ -2,17 +2,15 @@
 from flask import Flask, flash, redirect \
     ,render_template, request, session, abort, url_for, g
 
-import os
-import time
-from datetime import datetime
+from PythonApp import app
 
+#import os
+#import time
+#from datetime import datetime
 
-DEBUG = False
-TESTING = False
-SECRET_KEY = "q\xd2\xe2\xa8\xdf3\xb2\x11\xe7K/:\xd6\x86\xaf\x88"
+#app = Flask(__name__)
+#app.config.from_object(Config)
 
-app = Flask(__name__)
-app.config.from_object(__name__)
 
 @app.route("/")
 def index():
@@ -24,7 +22,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if session.get('logged_in'):
-        return redirect(url_for('/'))
+        return redirect(url_for('main'))
 
     if request.method == 'POST':
         user = request.form['user']
@@ -40,6 +38,13 @@ def login():
 def main_page():
     return render_template('main.html')
 
+#cannot find the correct method
 @app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
+
+#Cannot find the correct method
+@app.errorhandler(405)
 def page_not_found(e):
     return render_template("404.html")
