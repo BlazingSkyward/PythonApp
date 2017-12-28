@@ -1,6 +1,6 @@
 #PythonApp - Title TBD
 
-This application is to create reminders for everyday tasks and would implement machine learning to predict when a reminder has been forgotten to notify user in a more efficient manner. 
+This application is to create reminders for everyday tasks and would implement machine learning to predict when a reminder has been forgotten to notify user in a more efficient manner.
 
 ## Getting Started
 
@@ -10,6 +10,8 @@ This application is to create reminders for everyday tasks and would implement m
 
 Python 2.7
 Flask 0.12
+flask_sqlalchemy
+flask-migrate
 
 ### Installing
 

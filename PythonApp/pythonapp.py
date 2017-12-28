@@ -1,26 +1,18 @@
 #!/usr/bin/python
 from flask import Flask, flash, redirect \
-    ,render_template, request, session, abort, url_for \
-    , models
+    ,render_template, request, session, abort, url_for, g
 
 import os
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from config import Config
+import time
+from datetime import datetime
 
-class Config(object):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'pythonapp.db')
-    DEBUG = False
-    TESTING = False
-    SECRET_KEY = os.environ.get('SECRET_KEY') or os.urandom(16)
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+DEBUG = False
+TESTING = False
+SECRET_KEY = "q\xd2\xe2\xa8\xdf3\xb2\x11\xe7K/:\xd6\x86\xaf\x88"
 
 app = Flask(__name__)
-app.config.from_object(Config)
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
-
+app.config.from_object(__name__)
 
 @app.route("/")
 def index():
