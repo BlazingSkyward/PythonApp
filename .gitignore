@@ -1,0 +1,4 @@
+pythonapp.db
+*.pyc
+migrations
+.DS_Store

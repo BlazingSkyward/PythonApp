@@ -15,7 +15,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if session.get('logged_in'):
-        return redirect(url_for('main'))
+        return redirect(url_for('main_page'))
 
     if request.method == 'POST':
         user = request.form['user']
@@ -26,6 +26,11 @@ def login():
         else:
             return render_template('login.html')
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in',None)
+    return redirect(url_for('index'))
 
 @app.route("/main") #,methods=['GET', 'POST'])
 def main_page():
