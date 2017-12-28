@@ -4,13 +4,6 @@ from flask import Flask, flash, redirect \
 
 from PythonApp import app
 
-#import os
-#import time
-#from datetime import datetime
-
-#app = Flask(__name__)
-#app.config.from_object(Config)
-
 
 @app.route("/")
 def index():
