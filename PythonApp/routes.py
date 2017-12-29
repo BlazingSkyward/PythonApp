@@ -4,7 +4,6 @@ from flask import Flask, flash, redirect \
 
 from PythonApp import app
 
-
 @app.route("/")
 def index():
     if not session.get('logged_in'):
@@ -36,6 +35,11 @@ def logout():
 def main_page():
     return render_template('main.html')
 
+@app.route("/temp")
+def lol():
+    return render_template('layout.html')
+
+
 #cannot find the correct method
 @app.errorhandler(404)
 def page_not_found(e):
@@ -46,3 +50,5 @@ def page_not_found(e):
 @app.errorhandler(405)
 def page_not_found(e):
     return render_template("404.html")
+
+#automatically logout when the app closes
