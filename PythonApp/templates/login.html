@@ -1,29 +1,17 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title> PythonApp </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="{{ url_for('static',filename='css/login.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
+{% extends "layout.html" %}
 
-  </head>
-
-<!--Login/Register-->
-  <form class="login" action="/login" method="POST">
-		      <img src="{{url_for('static', filename='images/forgot_professor.jpg')}}" alt="Funny Meme"/>
-		      <div>
-            <input type="text" placeholder="Username"  name="user"
-            value="{{request.form.username}}">
-          </div>
-		      <div>
-            <input type="Password" placeholder="Password"  name="password",
-            value="{{request.form.password}}">
-          </div>
-		      <div>
-            <input  type="submit" value="Register/Login">
-          </div>
-  </form>
-<!--.-->
-
-</html>
+{% block content %}
+<img src="{{url_for('static', filename='images/forgot_professor.jpg')}}" alt="Funny Meme" class="center-block"/>
+<form class="login center-block" action="/login" method="POST">
+  <div class="center-block">
+    <input type="text" placeholder="Username"  name="user" value="{{request.form.username}}">
+  </div>
+  <div class="center-block">
+    <input type="Password" placeholder="Password"  name="password",
+    value="{{request.form.password}}">
+  </div>
+  <div class="center-block">
+    <input  type="submit" value="Register/Login">
+  </div>
+</form>
+{% endblock %}
