@@ -35,10 +35,6 @@ def logout():
 def main_page():
     return render_template('main.html')
 
-@app.route("/temp")
-def lol():
-    return render_template('layout.html')
-
 
 #cannot find the correct method
 @app.errorhandler(404)

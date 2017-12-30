@@ -86,7 +86,7 @@
     .login input[type=submit]:hover{
       background:transparent;
       transition: all 0.6s ease 0s;
-      color:#3498db;
+      color:#F8F8F8;
       border: 1px solid #3498db;
     }
     .login input[type=Password]:active{
@@ -102,7 +102,7 @@
     .login input[type=submit]:active{
       outline: none;
       border: 1px solid #1abc9c;
-      background:#3498db;
+      background:#F8F8F8;
       color:white;
       transition: all 0.2s ease;
     }
@@ -111,21 +111,37 @@
 
   </head>
 
-  <body>
+  <header>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">The Great Reminder</a>
+          <a class="navbar-brand" href="{{url_for('index')}}">The Great Reminder</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="{{url_for('index')}}">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
     </nav>
-    {% block content %}{% endblock %}
+  </header>
+
+  <body>
+    <div class="container" style="min-height:100% width:80%">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        {{message}}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </div>
   </body>
 
 

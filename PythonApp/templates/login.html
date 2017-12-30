@@ -3,14 +3,14 @@
 {% block content %}
 <img src="{{url_for('static', filename='images/forgot_professor.jpg')}}" alt="Funny Meme" class="center-block"/>
 <form class="login center-block" action="/login" method="POST">
-  <div class="center-block">
+  <div>
     <input type="text" placeholder="Username"  name="user" value="{{request.form.username}}">
   </div>
-  <div class="center-block">
+  <div>
     <input type="Password" placeholder="Password"  name="password",
     value="{{request.form.password}}">
   </div>
-  <div class="center-block">
+  <div>
     <input  type="submit" value="Register/Login">
   </div>
 </form>
