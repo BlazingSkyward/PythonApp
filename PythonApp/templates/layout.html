@@ -7,11 +7,16 @@
     <meta name="description" content="The Great Reminder">
     <meta name="author" content="Malik Abu-Kalokoh">
     <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}" >  -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script> -->
     <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}">
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
     <style>
     .login{
@@ -112,22 +117,68 @@
   </head>
 
   <header>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="{{url_for('index')}}">The Great Reminder</a>
         </div>
+
+        {% if session.get('logged_in') %}
         <ul class="nav navbar-nav">
-          <li><a href="{{url_for('index')}}">Home</a></li>
-          {% if session.get('logged_in') %}
-          <li><a data-toggle="modal" data-target="#createModal">New</a></li>
-          {% endif %}
+          <li><a href="#createModal" data-toggle="modal" data-target="#createModal">New</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
+        {% endif %}
+
       </div>
     </nav>
+
+    <div class="modal fade" id="createModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"> &times;</button>
+            <h1>New Reminder</h1>
+          </div>
+
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <form method="POST">
+                    <div class="form-group ">
+                      <label class="control-label requiredField" for="message">
+                        Reminder
+                        <span class="asteriskField">*</span>
+                      </label>
+                      <input class="form-control" id="message" name="message" placeholder="This is what I have to remember" type="text"/>
+                    </div>
+                    <div class="form-group ">
+                      <label class="control-label requiredField" for="date">
+                        Due Date
+                        <span class="asteriskField">*</span>
+                      </label>
+                      <input class="form-control" id="date" name="date" placeholder="When it needs to be done" type="text"/>
+                    </div>
+                    <div class="form-group">
+                      <div>
+                        <button class="btn btn-primary " name="submit" type="submit">
+                          Submit
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </header>
 
   <body>
