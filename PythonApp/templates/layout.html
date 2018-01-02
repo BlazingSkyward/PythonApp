@@ -14,11 +14,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <!-- Bootstrap Date-Picker Plugin -->
+    <!--Font Awesome (added because you use icons in your prepend/append)-->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+    <!-- Include jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include Date Range Picker -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-    <style>
+    <script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+  </script>
+  <style>
     .login{
       width:500px;
       margin-left:auto;
@@ -141,7 +159,7 @@
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"> &times;</button>
-            <h1>New Reminder</h1>
+            <h1>New</h1>
           </div>
 
           <div class="modal-body">
@@ -152,16 +170,26 @@
                     <div class="form-group ">
                       <label class="control-label requiredField" for="message">
                         Reminder
-                        <span class="asteriskField">*</span>
+                        <span class="asteriskField">
+                          *
+                        </span>
                       </label>
                       <input class="form-control" id="message" name="message" placeholder="This is what I have to remember" type="text"/>
                     </div>
                     <div class="form-group ">
                       <label class="control-label requiredField" for="date">
                         Due Date
-                        <span class="asteriskField">*</span>
+                        <span class="asteriskField">
+                          *
+                        </span>
                       </label>
-                      <input class="form-control" id="date" name="date" placeholder="When it needs to be done" type="text"/>
+                      <div class="input-group">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar">
+                          </i>
+                        </div>
+                        <input class="form-control" id="date" name="date" placeholder="When it needs to be done(MM/DD/YYYY)" type="text"/>
+                      </div>
                     </div>
                     <div class="form-group">
                       <div>
@@ -178,7 +206,6 @@
         </div>
       </div>
     </div>
-
   </header>
 
   <body>
