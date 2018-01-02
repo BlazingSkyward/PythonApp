@@ -5,16 +5,21 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-
+    remidner = db.relationship('Reminder', backref='user', lazy='dynamic')
     #how the class is represented
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    def __init__(self,username,password_hash):
+        self.username = username
+        self.password_hash = password_hash
 
 class Reminder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.Text,nullable=False)
     created_timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     completed_timestamp = db.Column(db.DateTime)
+    due_timestamp = db.Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     completed = db.Column(db.Boolean,default=False)
 

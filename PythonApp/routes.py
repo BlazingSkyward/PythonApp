@@ -23,6 +23,7 @@ def login():
             session['logged_in'] = user
             return redirect(url_for('main_page'))
         else:
+            flash("Either the wrong user name or password")
             return render_template('login.html')
     return render_template('login.html')
 
