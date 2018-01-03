@@ -1,11 +1,11 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from PythonApp import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    remidner = db.relationship('Reminder', backref='user', lazy='dynamic')
+    reminder = db.relationship('Reminder', backref='user', lazy='dynamic')
     #how the class is represented
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -19,9 +19,13 @@ class Reminder(db.Model):
     message = db.Column(db.Text,nullable=False)
     created_timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     completed_timestamp = db.Column(db.DateTime)
-    due_timestamp = db.Column(db.DateTime)
+    due_timestamp = db.Column(db.DateTime,nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     completed = db.Column(db.Boolean,default=False)
 
     def __repr__(self):
         return '<Reminder {}>'.format(self.message)
+
+    def __init__(self,message):
+        self.message = message
+        self.due_timestamp = datetime(2018,12,9)

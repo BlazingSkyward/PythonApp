@@ -10,7 +10,21 @@
           <th>Due Date</th>
           <th>Completed</th>
         </tr>
-        <tbody>
-        </tbody>
+      </thead>
+      <tbody>
+        {% for rem in reminders %}
+        <tr>
+          <td> {{ rem.id }} </td>
+          <td> {{ rem.created_timestamp.strftime('%Y-%m-%d %H:%M') }} </td>
+          <td> {{ rem.message }} </td>
+          <td> {{ rem.due_timestamp.strftime('%Y-%m-%d %H:%M') }} </td>
+          <td>
+            <form method="post" name="Mark Done">
+              <button type="submit" name="{{ rem.id }}" > Mark Done </button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
 {% endblock %}

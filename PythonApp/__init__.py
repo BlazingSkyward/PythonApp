@@ -8,7 +8,7 @@ app.config.from_object(Config)
 app.config.from_envvar('PYTHONAPP_SETTINGS', silent=True) #Since silent is true then nothing will occur if mess up
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-db.create_all()
 
 
 from PythonApp import routes, models
+db.create_all()
