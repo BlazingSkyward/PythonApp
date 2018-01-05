@@ -20,21 +20,15 @@
     <!-- Include jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <!-- Include DateTime Range Picker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
 
-    <script>
-    $(document).ready(function(){
-        var date_input=$('input[name="date"]'); //our date input has the name "date"
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
-    })
+  <script>
+    $(function () {
+      $('#datetimepicker1').datetimepicker();
+    });
   </script>
   <style>
     .login{
@@ -153,59 +147,7 @@
       </div>
     </nav>
 
-    <div class="modal fade" id="createModal" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
 
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"> &times;</button>
-            <h1>New</h1>
-          </div>
-
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                  <form method="POST">
-                    <div class="form-group ">
-                      <label class="control-label requiredField" for="message">
-                        Reminder
-                        <span class="asteriskField">
-                          *
-                        </span>
-                      </label>
-                      <input class="form-control" id="message" name="message" placeholder="This is what I have to remember" type="text"/>
-                    </div>
-                    <div class="form-group ">
-                      <label class="control-label requiredField" for="date">
-                        Due Date
-                        <span class="asteriskField">
-                          *
-                        </span>
-                      </label>
-                      <div class="input-group">
-                        <div class="input-group-addon">
-                          <i class="fa fa-calendar">
-                          </i>
-                        </div>
-                        <input class="form-control" id="date" name="date" placeholder="When it needs to be done(MM/DD/YYYY)" type="text"/>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div>
-                        <button class="btn btn-primary " name="submit" type="submit">
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </header>
 
   <body>

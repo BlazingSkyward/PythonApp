@@ -3,8 +3,8 @@ from flask import Flask, flash, redirect \
     ,render_template, request, session, abort, url_for, g
 
 from PythonApp import app, db
-from models import User
-from forms import LoginForm
+from models import User,Reminder
+from forms import LoginForm, NewForm
 
 @app.route("/index")
 @app.route("/")
@@ -19,11 +19,11 @@ def login():
     form = LoginForm()
     if  session.get('logged_in'):
         temp = User.query.filter_by(id=session.get('logged_in')).first()
-        return redirect(url_for('main_page')
+        return redirect(url_for('main_page'))
 
     if form.validate_on_submit():
         user = form.username.data
-        password = form.password.datar
+        password = form.password.data
         temp = User.query.filter_by(username=user,password_hash=password).first()
         if  temp:
             session['logged_in'] = temp.id
@@ -43,16 +43,17 @@ def logout():
 def main_page():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
+    newForm = NewForm()
+    user = User.query.filter_by(id=session.get('logged_in')).first()
+    
+    if newForm.validate_on_submit():
+        newReminder = Reminder(newForm.message.data,newForm.date.data)
+        user.reminder.append(newReminder)
+        db.session.commit()
+        return redirect(url_for('main_page'))
 
-    temp =  User.query.filter_by(id=session.get('logged_in')).first().reminder.all()
-    return render_template('main.html',reminders=temp)
 
-@app.route('/submit', methods=('GET', 'POST'))
-def submit():
-    form = MyForm()
-    if form.validate_on_submit():
-        return redirect('/success')
-    return render_template('test.html', form=form)
+    return render_template('main.html',reminders=user.reminder.all(), newForm=newForm)
 
 
 #cannot find the correct method

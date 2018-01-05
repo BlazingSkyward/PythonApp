@@ -1,6 +1,59 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<div class="modal fade" id="createModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"> &times;</button>
+        <h1>New</h1>
+      </div>
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <form method="POST">
+                {{newForm.hidden_tag()}}
+                <div class="form-group ">
+                  <label class="control-label requiredField" for="message">
+                    Reminder
+                    <span class="asteriskField">
+                      *
+                    </span>
+                  </label>
+                  {{newForm.message(class_='form-control',style="size: 100%;")}}
+                </div>
+                <div class="form-group ">
+                  <label class="control-label requiredField" for="date">
+                    Due Date
+                    <span class="asteriskField">
+                      *
+                    </span>
+                  </label>
+                  <div class='input-group date' id='datetimepicker1'>
+                    {{newForm.date(class_='form-control')}}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+                </div>
+                <div class="form-group">
+                  <div>
+                    <button class="btn btn-primary " name="submit" type="submit">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     <table class="table table-hover">
       <thead>
         <tr>

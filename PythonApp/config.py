@@ -9,3 +9,4 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'pythonapp.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
+    TEMPLATES_AUTO_RELOAD = True

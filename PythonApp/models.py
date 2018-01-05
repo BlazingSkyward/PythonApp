@@ -26,6 +26,6 @@ class Reminder(db.Model):
     def __repr__(self):
         return '<Reminder {}>'.format(self.message)
 
-    def __init__(self,message):
+    def __init__(self,message,date_time=datetime(2018,12,9)):
         self.message = message
-        self.due_timestamp = datetime(2018,12,9)
+        self.due_timestamp = date_time
