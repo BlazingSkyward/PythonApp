@@ -15,6 +15,7 @@
           <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
               <form method="POST">
+                {{ newForm.csrf_token }}
                 {{newForm.hidden_tag()}}
                 <div class="form-group ">
                   <label class="control-label requiredField" for="message">
@@ -68,13 +69,19 @@
         {% for rem in reminders %}
         <tr>
           <td> {{ rem.id }} </td>
-          <td> {{ rem.created_timestamp.strftime('%Y-%m-%d %H:%M') }} </td>
+          <td> {{ rem.created_timestamp.strftime('%m/%d/%Y %I:%M %p') }} </td>
           <td> {{ rem.message }} </td>
-          <td> {{ rem.due_timestamp.strftime('%Y-%m-%d %H:%M') }} </td>
+          <td> {{ rem.due_timestamp.strftime('%m/%d/%Y %I:%M %p') }} </td>
           <td>
+            {% if not rem.completed_timestamp  %}
             <form method="post" name="Mark Done">
-              <button type="submit" name="{{ rem.id }}" > Mark Done </button>
+              <input type="submit" name="Mark Done" value="Mark Done!">
+              <input type="hidden" name="id" value="{{ rem.id }} ">
+
             </form>
+            {% else %}
+            {{rem.completed_timestamp.strftime('%m/%d/%Y %I:%M %p')}}
+            {% endif %}
           </td>
         </tr>
         {% endfor %}

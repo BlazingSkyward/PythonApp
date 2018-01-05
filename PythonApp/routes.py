@@ -5,6 +5,7 @@ from flask import Flask, flash, redirect \
 from PythonApp import app, db
 from models import User,Reminder
 from forms import LoginForm, NewForm
+from datetime import datetime
 
 @app.route("/index")
 @app.route("/")
@@ -45,12 +46,20 @@ def main_page():
         return redirect(url_for('login'))
     newForm = NewForm()
     user = User.query.filter_by(id=session.get('logged_in')).first()
-    
-    if newForm.validate_on_submit():
-        newReminder = Reminder(newForm.message.data,newForm.date.data)
-        user.reminder.append(newReminder)
-        db.session.commit()
-        return redirect(url_for('main_page'))
+
+    if request.method == 'POST':
+        if newForm.validate():
+            newReminder = Reminder(newForm.message.data,newForm.date.data)
+            user.reminder.append(newReminder)
+            db.session.commit()
+            return redirect(url_for('main_page'))
+        elif request.form.get('id'):
+            editedReminder = user.reminder.filter_by(id=request.form.get('id')).first()
+            editedReminder.completed_timestamp = datetime.now()
+            print editedReminder
+            db.session.commit()
+            return redirect(url_for('main_page'))
+
 
 
     return render_template('main.html',reminders=user.reminder.all(), newForm=newForm)
