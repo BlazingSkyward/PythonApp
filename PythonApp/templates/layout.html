@@ -139,10 +139,16 @@
         <ul class="nav navbar-nav">
           <li><a href="#createModal" data-toggle="modal" data-target="#createModal">New</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-        </ul>
         {% endif %}
+
+        <ul class="nav navbar-nav navbar-right">
+          {% if session.get('logged_in') %}
+          <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          {% else %}
+          <li><a href="#registerModal" data-toggle="modal" data-target="#registerModal" >Register</a></li>
+          {% endif %}
+        </ul>
+
 
       </div>
     </nav>

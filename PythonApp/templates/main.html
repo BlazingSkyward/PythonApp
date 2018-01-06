@@ -77,7 +77,6 @@
             <form method="post" name="Mark Done">
               <input type="submit" name="Mark Done" value="Mark Done!">
               <input type="hidden" name="id" value="{{ rem.id }} ">
-
             </form>
             {% else %}
             {{rem.completed_timestamp.strftime('%m/%d/%Y %I:%M %p')}}

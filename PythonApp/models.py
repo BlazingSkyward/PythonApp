@@ -4,15 +4,17 @@ from PythonApp import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
+    email = db.Column(db.Text(), nullable=False)
     password_hash = db.Column(db.String(128))
     reminder = db.relationship('Reminder', backref='user', lazy='dynamic')
     #how the class is represented
     def __repr__(self):
         return '<User {}>'.format(self.username)
 
-    def __init__(self,username,password_hash):
+    def __init__(self,username,password_hash, email):
         self.username = username
         self.password_hash = password_hash
+        self.email = email
 
 class Reminder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
