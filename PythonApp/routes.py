@@ -44,7 +44,7 @@ def login():
         db.session.commit()
         session['logged_in'] = User.query.filter_by(username=user,password_hash=password).first().id
 
-        return redirect(url_for('login'))
+        return redirect(url_for('main_page'))
 
 
 
@@ -84,6 +84,7 @@ def main_page():
 #cannot find the correct method
 @app.errorhandler(404)
 def page_not_found(e):
+    print e
     return render_template("404.html")
 
 
