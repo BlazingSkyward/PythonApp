@@ -40,11 +40,11 @@ def login():
         password = register.password.data
         email = register.email.data
         newUser = User(user,password,email)
-        print newUser.id.__class__
-        #db.session.add(newUser)
-        #db.session.commit()
+        db.session.add(newUser)
+        db.session.commit()
+        session['logged_in'] = User.query.filter_by(username=user,password_hash=password).first().id
 
-        #return redirect(url_for('login'))
+        return redirect(url_for('login'))
 
 
 
