@@ -12,19 +12,30 @@ This application is to create reminders for everyday tasks and would implement m
 * Flask 0.12
 * flask_sqlalchemy
 * flask-migrate
+* flask-wtforms
 
 ### Installing
 
-no need as is Python Script as of now
+I would used a virtual enviroment as below with Python2.7 installed on the system
 
 ```
-Give the example
+sudo pip install virtualenv
+
+virtualenv venv
+
+source venv/bin/activate
 ```
 
-And repeat
+Then use the setup.py install packages
 
 ```
-until finished
+python setup.py install
+
+cd build/lib
+
+export FLASK_APP=pythonapp.py
+
+flask run
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
