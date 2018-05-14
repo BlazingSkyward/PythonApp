@@ -1,4 +1,5 @@
 #PythonApp - Title TBD
+#Underdevelopment
 
 This application is to create reminders for everyday tasks and would implement machine learning to predict when a reminder has been forgotten to notify user in a more efficient manner.
 
