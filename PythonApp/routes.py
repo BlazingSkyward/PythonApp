@@ -3,8 +3,8 @@ from flask import Flask, flash, redirect \
     ,render_template, request, session, abort, url_for, g
 
 from PythonApp import app, db
-from models import User,Reminder
-from forms import LoginForm, NewForm, RegisterForm
+from PythonApp.models import User,Reminder
+from PythonApp.forms import LoginForm, NewForm, RegisterForm
 from datetime import datetime
 
 @app.route("/index")
@@ -82,14 +82,9 @@ def main_page():
 
 #cannot find the correct method
 @app.errorhandler(404)
-def page_not_found(e):
-    print e
-    return render_template("404.html")
-
-
-#Cannot find the correct method
 @app.errorhandler(405)
 def page_not_found(e):
+    print(e)
     return render_template("404.html")
 
 #automatically logout when the app closes

@@ -9,7 +9,7 @@ This application is to create reminders for everyday tasks and would implement m
 
 ### Prerequisites
 
-* Python 2.7
+* Python 3.6
 * Flask 0.12
 * flask_sqlalchemy
 * flask-migrate
@@ -35,6 +35,7 @@ python setup.py install
 cd build/lib
 
 export FLASK_APP=pythonapp.py
+export FLASK_ENV=development
 
 flask run
 ```

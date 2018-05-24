@@ -19,7 +19,7 @@ class User(db.Model):
 class Reminder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     message = db.Column(db.Text,nullable=False)
-    created_timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    created_timestamp = db.Column(db.DateTime, index=True, default=datetime.now)
     completed_timestamp = db.Column(db.DateTime)
     due_timestamp = db.Column(db.DateTime,nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

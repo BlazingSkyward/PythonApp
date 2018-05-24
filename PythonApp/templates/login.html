@@ -57,8 +57,10 @@
   <div>
     {{ form.password_log()}}
   </div>
+  <div>{{ form.remember_me_log() }} {{ form.remember_me_log.label }}</div>
   <div>
-    <input type="submit" value="Login">
+    {{ form.submit_log() }}
   </div>
+  
 </form>
 {% endblock %}
