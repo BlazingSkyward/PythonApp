@@ -15,6 +15,8 @@ class User(db.Model):
         self.username = username
         self.password_hash = password_hash
         self.email = email
+    
+    #cloning will go here 
 
 class Reminder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
